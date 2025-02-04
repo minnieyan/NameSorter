@@ -22,12 +22,13 @@ int main(void) {
 
     for (int x = 0; x < userMaxNames - 1; x++) {
         for (int i = 0; i < userMaxNames - 1; i++) {
-            if ((int)nameArray[i][0] > (int)nameArray[i + 1][0] ) {
-                char tempName[50];
-                for (int n = 0; n < 50; n++) {
-                    tempName[n] = nameArray[i + 1][n];
-                    nameArray[i + 1][n] = nameArray[i][n];
-                    nameArray[i][n] = tempName[n];
+            for (int y = 49; y >= 0; y--) {
+                if ((int)nameArray[i][y] > (int)nameArray[i + 1][y]) {
+                    for (int n = 0; n < 50; n++) {
+                        char tempChar = nameArray[i + 1][n];
+                        nameArray[i + 1][n] = nameArray[i][n];
+                        nameArray[i][n] = tempChar;
+                    }
                 }
             }
         }
